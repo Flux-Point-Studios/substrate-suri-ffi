@@ -1,0 +1,17 @@
+[package]
+name = "substrate_suri_ffi"
+version = "0.1.0"
+edition = "2021"
+description = "C FFI for deriving sr25519 keypairs from Substrate SURI strings"
+
+[lib]
+crate-type = ["cdylib", "staticlib"]
+
+[dependencies]
+sp-core = { version = "34", default-features = false, features = ["std"] }
+sp-runtime = { version = "39", default-features = false, features = ["std"] }
+
+[profile.release]
+lto = true
+opt-level = "z"
+strip = true
